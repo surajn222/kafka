@@ -17,5 +17,5 @@ producer=KafkaProducer(bootstrap_servers=bootstrap_servers)
 # Publish text in defined topic
 while True:
 	now = datetime.now()
-	producer.send(topicName, b'Hello from kafka at ' + str(now) )
-	print("Message sent =", now)
+	producer.send(topicName, b'Hello from kafka at ' + now.encode() )
+	print("Message sent =", str(now))
