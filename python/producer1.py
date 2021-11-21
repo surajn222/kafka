@@ -1,6 +1,7 @@
 # Import KafkaProducer from Kafka library
 from kafka import KafkaProducer
 from datetime import datetime
+import time
 # Define server with port
 bootstrap_servers=['localhost:9092']
 
@@ -17,5 +18,6 @@ producer=KafkaProducer(bootstrap_servers=bootstrap_servers)
 # Publish text in defined topic
 while True:
 	now = datetime.now()
+	time.sleep(1)
 	producer.send(topicName, b'Hello from kafka at ' + str(now).encode() )
 	print("Message sent =", str(now))
