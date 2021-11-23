@@ -1,8 +1,8 @@
 # Import KafkaConsumer from Kafka library
 from kafka import KafkaConsumer
-
-# Import sys module
-import sys
+import logging
+logging.basicConfig(level=logging.INFO)
+logging.info('The info message is displaying')
 
 # Define server with port
 bootstrap_servers = ['localhost:9092']
@@ -11,12 +11,10 @@ bootstrap_servers = ['localhost:9092']
 topicName='topic_1'
 
 # Initialize consumer variable
-consumer = KafkaConsumer (topicName, group_id ='group1',bootstrap_servers =
-           bootstrap_servers)
+consumer = KafkaConsumer (topicName, group_id='group1',bootstrap_servers=bootstrap_servers)
 
 # Read and print message from consumer
 for msg in consumer:
-    print("Topic")
-    print("Topic Name=%s,Message=%s"%(msg.topic,msg.value))
+    logging.info("Topic Name=%s,Message=%s"%(msg.topic,msg.value))
 
 
