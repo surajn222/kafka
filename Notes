@@ -1,0 +1,59 @@
+Kafka:
+    Broker_1 (1 Node/1 Server running Kafka):
+            Topic_1 (Partitions:2, Replicas of Partitions: 3):
+                    Partition_1 (Leader - Accepts Messages from Producer): Messages (Offset 1,2,3,4,5,.....)
+            Topic_2 (Partitions:2, Replicas of Partitions: 2):
+                    Partition_1 (Leader - Accepts Messages from Producer): Messages (Offset 1,2,3,4,5,.....)
+
+    Broker_2 (1 Node/1 Server running Kafka):
+            Topic_1 (Partitions:2, Replicas of Partitions: 3):
+                    Partition_1 (Replica - Same messages as Leader)
+                    Partition_2 (Leader - Accepts Messages from Producer): Messages (Offset 1,2,3,4,5,.....)
+            Topic_2 (Partitions:2, Replicas of Partitions: 2):
+                    Partition_1 (Replica - Same messages as Leader)
+                    Partition_2 (Leader - Accepts Messages from Producer): Messages (Offset 1,2,3,4,5,.....)
+
+    Broker_3 ((1 Node/1 Server running Kafka):
+            Topic_1 (Partitions:2, Replicas of Partitions: 3):
+                    Partition_1 (Replica - Same messages as Leader)
+                    Partition_2 (Replica - Same messages as Leader)
+            Topic_2 (Partitions:2, Replicas of Partitions: 3):
+                    Partition_2 (Replica - Same messages as Leader)
+
+
+
+
+
+Topic_1: (Partitions: 2, Replicas: 3)
+    Partition_1
+    Partition_1
+    Partition_1
+    Partition_2
+    Partition_2
+    Partition_2
+
+Topic_2: (Partitions_3, Replicas: 2)
+    Partition_1
+    Partition_1
+    Partition_2
+    Partition_2
+    Partition_3
+    Partition_3
+
+
+
+
+
+Server/Broker_1:
+    Partition_1 of Topic_1
+
+    Partition_1 of Topic_2
+
+    Partition_1 of Topic_3
+
+Server/Broker_2:
+    Partition_1 of Topic_1
+    Partition_2 of Topic_1
+
+    Partition_1 of Topic_2
+    Partition_2 of Topic_2
