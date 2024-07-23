@@ -1,0 +1,42 @@
+@startuml
+
+
+package "Consumer Application CA1" {
+    entity "Consumer" as C1
+}
+
+package "Consumer Application CA2" {
+    entity "Consumer" as C2
+}
+
+package "Consumer Application CA3" {
+    entity "Consumer" as C3
+}
+
+package "Cluster of Nodes" {
+    node "Node 1" {
+        frame "Kafka Topic: Topic1" {
+            entity "Partition 1" as P1
+            entity "Partition 2" as P2
+        }
+    }
+
+    node "Node 2" {
+            frame "Kafka Topic: Topic2" {
+                entity "Partition 1"
+        }
+    }
+
+    node "Node 3" {
+            frame "Kafka Topic: Topic2" {
+                entity "Partition 1"
+        }
+    }
+}
+
+
+
+P1 <-- C1 : Consumes from
+P2 <-- C2 : Consumes from
+
+@enduml

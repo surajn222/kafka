@@ -1,0 +1,36 @@
+@startuml
+
+package "Cluster of Nodes" {
+    node "Node 1" {
+        frame "Kafka Topic: Topic1"  as K1 {
+            entity "Partition 1" as P1
+            entity "Partition 2" as P2
+        }
+    }
+
+    node "Node 2" {
+            frame "Kafka Topic: Topic2" {
+                entity "Partition 1"
+        }
+    }
+
+    node "Node 3" {
+            frame "Kafka Topic: Topic2" {
+                entity "Partition 1"
+        }
+    }
+}
+
+
+package "Consumer Application CA1" {
+    entity "Consumer" as C1
+}
+
+package "Consumer Application CA2" {
+    entity "Consumer" as C2
+}
+
+K1 <-- C1: \nSend a "JoinGroup" request to the Group Coordinator, \nand a "SyncGroup" request to confirm their participation
+K1 <-- C2: \nSend a "JoinGroup" request to the Group Coordinator, \nand a "SyncGroup" request to confirm their participation
+
+@enduml

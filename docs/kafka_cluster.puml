@@ -1,0 +1,24 @@
+@startuml
+
+package "Cluster of Nodes" {
+    node "Node 1" {
+        frame "Kafka Topic: Topic1" {
+            entity "Partition 1"
+            entity "Partition 2"
+        }
+    }
+
+    node "Node 2" {
+            frame "Kafka Topic: Topic2" {
+                entity "Partition 1"
+        }
+    }
+
+    node "Node 3" {
+            frame "Kafka Topic: Topic2" {
+                entity "Partition 1"
+        }
+    }
+}
+
+@enduml
